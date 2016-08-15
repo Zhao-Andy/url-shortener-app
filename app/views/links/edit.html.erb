@@ -1,0 +1,14 @@
+<h1>Update your link here!</h1>
+<%= form_tag %>
+
+<%= form_tag("/links", method: "patch") do %>
+
+  <%= label_tag(:target_url, "Target URL") %>
+  <%= text_field_tag(:target_url, @link.target_url) %>
+
+  <%= label_tag(:slug, "Shortened Link") %>
+  <%= text_field_tag(:slug, @link.slug) %>
+
+  <%= submit_tag("Update") %>
+
+<% end %>

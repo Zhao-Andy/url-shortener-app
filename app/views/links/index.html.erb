@@ -1,0 +1,23 @@
+<h1>Your links</h1>
+
+<table>
+  <tr>
+    <th>Slug</th>
+    <th>Target URL</th>
+    <th>Created At</th>
+    <th>Statistics</th>
+  </tr>
+  <% if @links.empty? %>
+  <h2>You have no links!</h2>
+  <% else %>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link_to "#{link.slug}", "#{link.slug}" %></td>
+        <td><%= link.target_url %></td>
+        <td><%= link.created_at %></td>
+        <td><%= link_to 'Stats', "/show/#{link.id}" %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<table>
+  <%= link_to 'Create a New Link', '/new' %>

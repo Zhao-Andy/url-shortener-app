@@ -1,0 +1,27 @@
+<% if @link.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@link.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @link.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<h1>Shorten a link here!</h1>
+<%= form_tag %>
+
+<%= form_tag("/links", method: "post") do %>
+
+  <%= label_tag(:target_url, "Target URL") %>
+  <%= text_field_tag(:target_url, @link.target_url) %>
+
+  <%= label_tag(:slug, "Shortened Link") %>
+  <%= text_field_tag(:slug, @link.slug) %>
+
+  <%= submit_tag("Shorten") %>
+
+<% end %>
